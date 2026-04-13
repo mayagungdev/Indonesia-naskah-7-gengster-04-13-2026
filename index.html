@@ -1,536 +1,333 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tugas Prakarya Pengolahan — Bolu Pisang</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
-<style>
-  :root {
-    --cream: #FDF6EC;
-    --warm: #F5E6C8;
-    --amber: #C8860A;
-    --dark: #2C1A0E;
-    --brown: #6B3F1A;
-    --green: #3D6B41;
-    --soft: #E8D5B0;
-    --gold: #D4A017;
-  }
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  body { background: var(--cream); font-family: 'DM Sans', sans-serif; color: var(--dark); line-height: 1.7; }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>7 Bayangan Kota · Versi Revisi</title>
+  <style>
+    /* TEMA GELAP – SIMPLE MINIMALIS */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-  .cover {
-    background: var(--dark);
-    color: var(--cream);
-    padding: 56px 40px 48px;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-  }
-  .cover::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(ellipse at 25% 40%, #6B3F1A55 0%, transparent 60%),
-                radial-gradient(ellipse at 80% 70%, #C8860A33 0%, transparent 50%);
-  }
-  .cover-label {
-    font-size: 10.5px;
-    font-weight: 600;
-    letter-spacing: 4px;
-    text-transform: uppercase;
-    color: var(--gold);
-    margin-bottom: 16px;
-    position: relative;
-  }
-  .cover h1 {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(34px, 6vw, 54px);
-    line-height: 1.15;
-    margin-bottom: 8px;
-    position: relative;
-  }
-  .cover h1 em { color: var(--gold); font-style: italic; }
-  .cover-sub { font-size: 13.5px; color: #c8b89a; margin-bottom: 32px; position: relative; letter-spacing: 0.5px; }
-  .cover-divider { width: 56px; height: 2px; background: var(--gold); margin: 0 auto 28px; position: relative; }
-  .cover-meta {
-    display: inline-flex;
-    gap: 28px;
-    font-size: 12px;
-    color: #b0a090;
-    position: relative;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
+    body {
+      background-color: #0f0f0f;
+      color: #e3e3e3;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, sans-serif;
+      line-height: 1.7;
+      padding: 2rem 1rem;
+      font-weight: 350;
+      letter-spacing: 0.01em;
+    }
 
-  .container { max-width: 740px; margin: 0 auto; padding: 0 22px 60px; }
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      background: #151515;
+      border-radius: 24px;
+      padding: 2.5rem 2rem;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(80, 80, 80, 0.1);
+      backdrop-filter: blur(2px);
+    }
 
-  .section { margin-top: 46px; }
-  .section-header {
-    display: flex;
-    align-items: center;
-    gap: 13px;
-    margin-bottom: 20px;
-    padding-bottom: 11px;
-    border-bottom: 1.5px solid var(--soft);
-  }
-  .section-number {
-    background: var(--amber);
-    color: white;
-    font-size: 11px;
-    font-weight: 700;
-    width: 27px;
-    height: 27px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-  }
-  .section-title { font-family: 'Playfair Display', serif; font-size: 19px; color: var(--brown); }
+    h1 {
+      font-size: 3.2rem;
+      font-weight: 500;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.25rem;
+      color: #f0f0f0;
+      border-left: 5px solid #9e7a5c;
+      padding-left: 1.2rem;
+      line-height: 1.2;
+    }
 
-  .product-card {
-    background: var(--dark);
-    color: var(--cream);
-    border-radius: 14px;
-    padding: 28px 26px;
-    display: grid;
-    grid-template-columns: 1fr auto;
-    gap: 20px;
-    align-items: center;
-  }
-  .product-card h2 { font-family: 'Playfair Display', serif; font-size: 26px; color: var(--gold); margin-bottom: 8px; }
-  .product-card p { font-size: 13px; color: #c8b89a; line-height: 1.75; }
-  .product-emoji { font-size: 60px; line-height: 1; opacity: 0.9; }
+    .subtitle {
+      font-size: 1rem;
+      font-weight: 380;
+      color: #a0a0a0;
+      margin-bottom: 2.5rem;
+      padding-left: 1.7rem;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+    }
 
-  .info-box {
-    background: var(--warm);
-    border-left: 4px solid var(--amber);
-    padding: 14px 18px;
-    border-radius: 0 10px 10px 0;
-    margin-top: 14px;
-    font-size: 13px;
-    color: var(--brown);
-  }
-  .info-box strong { color: var(--dark); }
+    /* karakter grid */
+    .character-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 0.8rem 1.5rem;
+      margin-bottom: 2.8rem;
+      padding: 1.2rem 0;
+      border-top: 1px solid #2a2a2a;
+      border-bottom: 1px solid #2a2a2a;
+    }
 
-  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-  @media (max-width: 520px) { .two-col { grid-template-columns: 1fr; } }
+    .char-item {
+      display: flex;
+      align-items: baseline;
+    }
 
-  .list-card {
-    background: white;
-    border: 1px solid var(--soft);
-    border-radius: 12px;
-    padding: 18px 20px;
-  }
-  .list-card h4 {
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--amber);
-    margin-bottom: 13px;
-  }
-  .list-card ul { list-style: none; }
-  .list-card ul li {
-    font-size: 13px;
-    padding: 5px 0;
-    border-bottom: 1px solid #f0e8d8;
-    display: flex;
-    justify-content: space-between;
-    gap: 8px;
-  }
-  .list-card ul li:last-child { border-bottom: none; }
-  .list-card ul li .qty { font-size: 11.5px; color: #8a6a40; white-space: nowrap; }
+    .char-name {
+      font-weight: 550;
+      color: #d4c5b2;
+      min-width: 85px;
+      font-size: 1.1rem;
+    }
 
-  .steps { display: flex; flex-direction: column; gap: 10px; }
-  .step {
-    background: white;
-    border: 1px solid var(--soft);
-    border-radius: 12px;
-    padding: 16px 18px;
-    display: flex;
-    gap: 14px;
-    align-items: flex-start;
-  }
-  .step-num {
-    background: var(--brown);
-    color: white;
-    font-size: 12px;
-    font-weight: 700;
-    width: 30px;
-    height: 30px;
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-  }
-  .step-content h4 { font-size: 13.5px; font-weight: 600; margin-bottom: 3px; color: var(--dark); }
-  .step-content p { font-size: 12.5px; color: #5a4030; line-height: 1.65; }
+    .char-desc {
+      color: #9a9a9a;
+      font-size: 0.9rem;
+      font-style: normal;
+    }
 
-  .pack-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
-  @media (max-width: 520px) { .pack-grid { grid-template-columns: 1fr 1fr; } }
-  .pack-item {
-    background: white;
-    border: 1px solid var(--soft);
-    border-radius: 11px;
-    padding: 14px 12px;
-    text-align: center;
-  }
-  .pack-icon { font-size: 26px; margin-bottom: 7px; }
-  .pack-item h4 { font-size: 11.5px; font-weight: 600; color: var(--brown); margin-bottom: 3px; }
-  .pack-item p { font-size: 11px; color: #7a5a30; line-height: 1.5; }
+    /* scene card */
+    .scene {
+      margin-bottom: 3.2rem;
+    }
 
-  .biaya-table { width: 100%; border-collapse: collapse; font-size: 13px; }
-  .biaya-table thead tr { background: var(--dark); color: var(--cream); }
-  .biaya-table thead th {
-    padding: 11px 14px;
-    text-align: left;
-    font-size: 10.5px;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    font-weight: 600;
-  }
-  .biaya-table thead th:last-child { text-align: right; }
-  .biaya-table tbody tr { border-bottom: 1px solid #ecdcc0; }
-  .biaya-table tbody tr:nth-child(even) { background: #faf4ea; }
-  .biaya-table tbody td { padding: 10px 14px; color: var(--dark); }
-  .biaya-table tbody td:last-child { text-align: right; font-variant-numeric: tabular-nums; }
-  .biaya-table tfoot tr { background: var(--amber); }
-  .biaya-table tfoot td { padding: 12px 14px; font-weight: 700; color: white; font-size: 13.5px; }
-  .biaya-table tfoot td:last-child { text-align: right; }
+    .scene-header {
+      display: flex;
+      align-items: baseline;
+      margin-bottom: 1.5rem;
+      border-bottom: 1px dashed #3a3a3a;
+      padding-bottom: 0.5rem;
+    }
 
-  .finance-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-  @media (max-width: 520px) { .finance-grid { grid-template-columns: 1fr; } }
-  .finance-card {
-    border-radius: 13px;
-    padding: 22px 20px;
-    position: relative;
-    overflow: hidden;
-  }
-  .finance-card.modal { background: var(--green); color: white; }
-  .finance-card.harga { background: var(--amber); color: white; }
-  .fc-label { font-size: 10.5px; letter-spacing: 2.5px; text-transform: uppercase; opacity: 0.75; margin-bottom: 9px; font-weight: 600; }
-  .fc-main { font-family: 'Playfair Display', serif; font-size: 30px; font-weight: 700; line-height: 1; margin-bottom: 6px; }
-  .fc-sub { font-size: 12px; opacity: 0.8; line-height: 1.5; }
-  .fc-deco { position: absolute; right: -10px; bottom: -12px; font-size: 68px; opacity: 0.12; }
+    .scene-title {
+      font-size: 1.7rem;
+      font-weight: 430;
+      color: #d9cfc4;
+      letter-spacing: -0.01em;
+    }
 
-  .profit-box {
-    background: white;
-    border: 1px solid var(--soft);
-    border-radius: 12px;
-    padding: 18px 20px;
-    margin-top: 14px;
-  }
-  .profit-box h4 {
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--amber);
-    margin-bottom: 13px;
-  }
-  .pb-row {
-    display: flex;
-    justify-content: space-between;
-    font-size: 13px;
-    padding: 7px 0;
-    border-bottom: 1px solid #f0e8d8;
-    color: var(--dark);
-  }
-  .pb-row:last-child { border-bottom: none; font-weight: 700; font-size: 14px; color: var(--green); }
+    .scene-location {
+      margin-left: 1rem;
+      font-size: 0.9rem;
+      color: #8a8a8a;
+      font-weight: 350;
+    }
 
-  .conclusion-box {
-    background: #e8f5e9;
-    border-left: 4px solid var(--green);
-    padding: 14px 18px;
-    border-radius: 0 10px 10px 0;
-    margin-top: 14px;
-    font-size: 13px;
-    color: #2d4a30;
-  }
-  .conclusion-box strong { color: #1a3020; }
+    /* dialog */
+    .dialogue-block {
+      margin-bottom: 1.8rem;
+    }
 
-  footer {
-    text-align: center;
-    padding: 22px;
-    font-size: 11px;
-    color: #a09070;
-    border-top: 1px solid var(--soft);
-    margin-top: 46px;
-  }
-</style>
+    .line {
+      margin-bottom: 0.9rem;
+      padding-left: 0.5rem;
+      border-left: 2px solid transparent;
+      transition: border 0.15s ease;
+    }
+
+    .line:hover {
+      border-left-color: #5e5e5e;
+    }
+
+    .speaker {
+      font-weight: 600;
+      color: #c7b7a5;
+      margin-right: 0.75rem;
+      font-size: 1.05rem;
+    }
+
+    .speaker::after {
+      content: "·";
+      margin-left: 0.3rem;
+      color: #6a5e54;
+      font-weight: 300;
+    }
+
+    .action {
+      color: #b0a89e;
+      font-style: italic;
+      margin: 0.8rem 0 0.8rem 1.8rem;
+      font-size: 0.95rem;
+      opacity: 0.9;
+      border-left: 1px solid #3a3a3a;
+      padding-left: 1rem;
+    }
+
+    .dialogue-text {
+      color: #d2d0cd;
+      display: inline;
+    }
+
+    /* emphasis dalam dialog */
+    .emphasis {
+      font-style: italic;
+      color: #bdaa95;
+    }
+
+    hr {
+      border: none;
+      border-top: 1px solid #272727;
+      margin: 2.2rem 0;
+    }
+
+    /* footnote kecil */
+    .footer-note {
+      margin-top: 2.8rem;
+      text-align: right;
+      font-size: 0.8rem;
+      color: #5a5a5a;
+      border-top: 1px solid #202020;
+      padding-top: 1.5rem;
+    }
+
+    /* responsive */
+    @media (max-width: 550px) {
+      .container {
+        padding: 1.8rem 1.2rem;
+      }
+      h1 {
+        font-size: 2.5rem;
+      }
+      .character-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+      .scene-title {
+        font-size: 1.4rem;
+      }
+      .speaker {
+        display: block;
+        margin-bottom: 0.1rem;
+      }
+      .speaker::after {
+        content: "";
+      }
+      .dialogue-text {
+        display: block;
+        margin-left: 0.8rem;
+      }
+    }
+
+    /* smooth */
+    a, button {
+      all: unset;
+    }
+    ::selection {
+      background: #4a3f35;
+      color: #f0e7dd;
+    }
+  </style>
+  <!-- font Inter via system, fallback bagus -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300..600&display=swap" rel="stylesheet">
 </head>
 <body>
-
-<div class="cover">
-  <div class="cover-label">Tugas Prakarya Pengolahan — SMA</div>
-  <h1>Produk Pangan<br><em>Nabati Olahan</em></h1>
-  <div class="cover-sub">Bolu Pisang Kukus Kekinian</div>
-  <div class="cover-divider"></div>
-  <div class="cover-meta">
-    <span>🌿 Bahan Nabati</span>
-    <span>🍌 Produk Jadi: 10 buah</span>
-    <span>📦 Dikemas Mika</span>
-  </div>
-</div>
-
 <div class="container">
+  <h1>7 Bayangan Kota</h1>
+  <div class="subtitle">Versi Revisi · naskah diperpanjang</div>
 
-  <!-- 1 -->
-  <div class="section">
-    <div class="section-header">
-      <div class="section-number">1</div>
-      <div class="section-title">Produk yang Dipilih</div>
-    </div>
-    <div class="product-card">
-      <div>
-        <h2>Bolu Pisang Kukus</h2>
-        <p>Produk kue berbasis bahan pangan nabati yang dibuat dari pisang matang, tepung terigu, gula, dan minyak nabati. Tekstur lembut, rasa manis alami, dan mudah diproduksi skala rumahan.</p>
-      </div>
-      <div class="product-emoji">🍌</div>
-    </div>
-    <div class="info-box">
-      <strong>Alasan Pemilihan:</strong> Pisang adalah komoditas nabati yang mudah didapat, murah, dan disukai semua kalangan. Proses pengolahan cukup dikukus (tidak butuh oven), sehingga tidak memerlukan peralatan mahal. Nilai jual cukup baik sebagai camilan sehat kekinian.
-    </div>
+  <!-- DAFTAR KARAKTER -->
+  <div class="character-grid">
+    <div class="char-item"><span class="char-name">Luthfi</span><span class="char-desc">Pemimpin, dingin, strategis</span></div>
+    <div class="char-item"><span class="char-name">Dimas</span><span class="char-desc">Otak kedua, realistis</span></div>
+    <div class="char-item"><span class="char-name">Reyhan</span><span class="char-desc">Emosional, loyal, cepat tersulut</span></div>
+    <div class="char-item"><span class="char-name">Agung</span><span class="char-desc">Tenang, pengamat, jarang bicara</span></div>
+    <div class="char-item"><span class="char-name">Restu</span><span class="char-desc">Santai, humoris, tapi tajam</span></div>
+    <div class="char-item"><span class="char-name">Fahri</span><span class="char-desc">Ambisius, haus kekuasaan</span></div>
+    <div class="char-item"><span class="char-name">Dava</span><span class="char-desc">Paling muda, masih ragu</span></div>
   </div>
 
-  <!-- 2 -->
-  <div class="section">
-    <div class="section-header">
-      <div class="section-number">2</div>
-      <div class="section-title">Prosedur Pembuatan</div>
+  <!-- SCENE 1 -->
+  <section class="scene">
+    <div class="scene-header">
+      <span class="scene-title">Scene 1</span>
+      <span class="scene-location">Gudang Tua · Malam hari</span>
     </div>
+    <div class="action">(Cahaya lampu bohlam gantung berayun pelan, menciptakan bayangan yang bergerak-gerak di wajah ketujuh orang itu. Debu beterbangan di sela cahaya redup. Tidak ada yang duduk dengan nyaman.)</div>
 
-    <div class="two-col" style="margin-bottom:18px;">
-      <div class="list-card">
-        <h4>🔧 Alat</h4>
-        <ul>
-          <li>Kukusan / steamer <span class="qty">1 buah</span></li>
-          <li>Mangkuk besar (mixing bowl) <span class="qty">2 buah</span></li>
-          <li>Garpu / potato masher <span class="qty">1 buah</span></li>
-          <li>Whisk / pengocok telur <span class="qty">1 buah</span></li>
-          <li>Sendok makan & teh <span class="qty">secukupnya</span></li>
-          <li>Cetakan cup aluminium foil <span class="qty">10 buah</span></li>
-          <li>Spatula <span class="qty">1 buah</span></li>
-          <li>Timbangan dapur <span class="qty">1 buah</span></li>
-        </ul>
-      </div>
-      <div class="list-card">
-        <h4>🛒 Bahan</h4>
-        <ul>
-          <li>Pisang ambon matang <span class="qty">300 g (3 buah)</span></li>
-          <li>Tepung terigu serbaguna <span class="qty">200 g</span></li>
-          <li>Gula pasir <span class="qty">150 g</span></li>
-          <li>Telur ayam <span class="qty">2 butir</span></li>
-          <li>Minyak goreng nabati <span class="qty">80 ml</span></li>
-          <li>Baking powder <span class="qty">1 sdt</span></li>
-          <li>Baking soda <span class="qty">½ sdt</span></li>
-          <li>Vanili bubuk <span class="qty">½ sdt</span></li>
-          <li>Garam <span class="qty">sejumput</span></li>
-          <li>Keju parut (topping) <span class="qty">50 g</span></li>
-        </ul>
-      </div>
+    <div class="dialogue-block">
+      <div class="line"><span class="speaker">Luthfi</span><span class="dialogue-text">(Menatap lurus ke depan, suara rendah tapi beresonansi tajam) Kita gak bisa terus jadi alat. Udah waktunya kita naik. Bukan cuma minta jatah. Tapi tentuin arah angin.</span></div>
+      <div class="line"><span class="speaker">Dimas</span><span class="dialogue-text">(Menyilangkan tangan di dada, menatap Luthfi dengan dahi berkerut. Nada bicara skeptis.) Naik ke mana, Fi? Jangan ngomong kayak orang baru bangun tidur. Lu tau persis siapa yang kita lawan. Om Haris bukan preman pasar. Dia punya akses ke atas, ke petinggi. Kita cuma tujuh orang di gudang bocor. Gue realistis, bukan pengecut.</span></div>
+      <div class="line"><span class="speaker">Reyhan</span><span class="dialogue-text">(Memukul ringan tiang besi di sampingnya, rahang mengeras. Matanya memerah.) Gue capek, Mas! Capek nurut terus! Jari gue nyaris putus minggu lalu buat bersihin masalah mereka, pas uang turun… kita dapet recehan! Mereka pesta di hotel, kita kumpul di kandang tikus ini! Gak adil!</span></div>
+      <div class="line"><span class="speaker">Restu</span><span class="dialogue-text">(Tersenyum miring, mengeluarkan rokok dari balik telinga tapi tidak dinyalakan.) Tenang, Rey. Emosi itu bikin kita mati lebih cepat daripada peluru musuh. Atau lebih parah… bikin kita mati konyol. Duduk. Tarik napas. Pelan-pelan aja biar jantung lu gak meledak duluan sebelum perang dimulai.</span></div>
+      <div class="line"><span class="speaker">Fahri</span><span class="dialogue-text">(Berdiri menyender di sudut paling gelap. Suara memotong, dingin presisi.) Atau justru itu yang kita butuh. <span class="emphasis">Chaos</span>. Kekacauan. Dari situlah celah muncul. Kalau semua tenang dan teratur, kita gak akan pernah bisa masuk. Justru emosi Reyhan ini... ini bahan bakar. Kita perlu pembakaran.</span></div>
+      <div class="action">(Suasana berubah tegang. Restu menghentikan gerakan jarinya di rokok. Dimas menatap Fahri dengan curiga.)</div>
+      <div class="line"><span class="speaker">Agung</span><span class="dialogue-text">(Dari sudut tergelap, duduk di atas peti kayu lapuk. Suara pelan, serak.) Setiap langkah ada harga. Jangan pura-pura gak tau. Harga buat naik... nyawa. Bisa nyawa kita, bisa nyawa orang lain. Jangan cuma ngomong soal bakar-membakar kalau belum siap liat daging sendiri ikut gosong.</span></div>
+      <div class="line"><span class="speaker">Dava</span><span class="dialogue-text">(Termenung, jemarinya gemetar sedikit. Menatap punggung Luthfi.) Bang Fi... Kalau kita gagal? Bukan cuma gagal dapet uang. Maksud gue... kalau besok kita semua berakhir?</span></div>
+      <div class="line"><span class="speaker">Luthfi</span><span class="dialogue-text">(Berbalik perlahan. Tatapannya menusuk Dava, lalu menyapu seluruh ruangan.) Kalau kita gagal, Dava... berarti kita memang gak layak ada di permainan ini. Udah nasib kita jadi bayangan yang hilang ditelan gelap. Tapi kalau kita menang... gak ada lagi yang berani matiin lampu di depan muka kita. Pilih.</span></div>
     </div>
+  </section>
 
-    <div class="steps">
-      <div class="step">
-        <div class="step-num">1</div>
-        <div class="step-content">
-          <h4>Siapkan Kukusan</h4>
-          <p>Panaskan air di dalam kukusan hingga mendidih. Alasi tutup kukusan dengan kain bersih agar uap tidak menetes ke adonan.</p>
-        </div>
-      </div>
-      <div class="step">
-        <div class="step-num">2</div>
-        <div class="step-content">
-          <h4>Haluskan Pisang</h4>
-          <p>Kupas pisang ambon matang, haluskan menggunakan garpu hingga menjadi pure rata tanpa gumpalan besar. Sisihkan.</p>
-        </div>
-      </div>
-      <div class="step">
-        <div class="step-num">3</div>
-        <div class="step-content">
-          <h4>Kocok Telur dan Gula</h4>
-          <p>Kocok telur dan gula pasir menggunakan whisk selama ±3 menit hingga gula larut dan adonan sedikit pucat mengembang.</p>
-        </div>
-      </div>
-      <div class="step">
-        <div class="step-num">4</div>
-        <div class="step-content">
-          <h4>Campur Bahan Basah & Kering</h4>
-          <p>Masukkan pure pisang dan minyak ke kocokan telur, aduk rata. Ayak tepung, baking powder, baking soda, vanili, dan garam lalu masukkan ke adonan basah. Aduk teknik <em>folding</em> hingga rata — jangan overmix.</p>
-        </div>
-      </div>
-      <div class="step">
-        <div class="step-num">5</div>
-        <div class="step-content">
-          <h4>Tuang ke Cetakan</h4>
-          <p>Tuang adonan ke cup aluminium foil hingga ¾ penuh. Taburi topping keju parut atau choco chip di atasnya.</p>
-        </div>
-      </div>
-      <div class="step">
-        <div class="step-num">6</div>
-        <div class="step-content">
-          <h4>Kukus 20–25 Menit</h4>
-          <p>Kukus dengan api sedang selama 20–25 menit. Cek kematangan: tusukkan tusuk gigi ke tengah — jika keluar bersih, bolu matang.</p>
-        </div>
-      </div>
-      <div class="step">
-        <div class="step-num">7</div>
-        <div class="step-content">
-          <h4>Dinginkan & Kemas</h4>
-          <p>Keluarkan dari kukusan, dinginkan ±15 menit sebelum dikemas agar tidak berembun di dalam kemasan.</p>
-        </div>
-      </div>
+  <!-- SCENE 2 -->
+  <section class="scene">
+    <div class="scene-header">
+      <span class="scene-title">Scene 2</span>
+      <span class="scene-location">Kecurigaan · luar gudang</span>
     </div>
+    <div class="action">(Di luar gudang, dekat tumpukan drum bekas. Suara jangkrik nyaring. Dimas menahan lengan Luthfi sebelum ia masuk kembali.)</div>
+    <div class="dialogue-block">
+      <div class="line"><span class="speaker">Dimas</span><span class="dialogue-text">(Menarik Luthfi menjauh dari pintu, suara rendah dan cepat. Ekspresi waspada.) Tahan dulu. Gue mau ngomong sesuatu. Dan ini serius.</span></div>
+      <div class="line"><span class="speaker">Luthfi</span><span class="dialogue-text">(Berhenti, menyulut rokok. Asap mengepul di antara wajah mereka.) Soal Fahri lagi?</span></div>
+      <div class="line"><span class="speaker">Dimas</span><span class="dialogue-text">Gue gak percaya Fahri. Dan bukan karena dia ambisius—kita semua juga ambisius. Tapi tadi di dalam... lo denger caranya ngomong? "Kita perlu pembakaran." Dia ngomong soal <span class="emphasis">chaos</span> kayak orang laper liat prasmanan. Itu bukan semangat perang. Itu napsu.</span></div>
+      <div class="line"><span class="speaker">Luthfi</span><span class="dialogue-text">(Menghembuskan napas panjang. Matanya menerawang.) Dia selalu kayak gitu. Dingin. Gue butuh otaknya, Mas.</span></div>
+      <div class="line"><span class="speaker">Dimas</span><span class="dialogue-text">(Menepuk bahu Luthfi, agak keras. Nada mendesak.) Bukan dingin, Fi. Ini <span class="emphasis">tenang</span>. Ada bedanya. Orang dingin masih bisa menggigil. Orang setenang dia... lagi ngitung. Dia udah tau hasil akhir yang dia mau, dan kayaknya hasil akhir itu gak termasuk kita bertujuh. Lo tau gue gak pernah ngomong asal nuduh. Tapi feeling gue kali ini gak enak.</span></div>
+    </div>
+  </section>
 
-    <div style="margin-top:20px;">
-      <h3 style="font-family:'Playfair Display',serif;font-size:15.5px;color:var(--brown);margin-bottom:12px;">📦 Pengemasan Produk</h3>
-      <div class="pack-grid">
-        <div class="pack-item">
-          <div class="pack-icon">🧊</div>
-          <h4>Kotak Mika</h4>
-          <p>Transparan, 1 bolu per kemasan, produk terlihat langsung</p>
-        </div>
-        <div class="pack-item">
-          <div class="pack-icon">🎀</div>
-          <h4>Label & Pita</h4>
-          <p>Stiker nama produk, komposisi, dan tanggal produksi</p>
-        </div>
-        <div class="pack-item">
-          <div class="pack-icon">🌿</div>
-          <h4>Desain Natural</h4>
-          <p>Warna kraft/coklat, kesan homemade premium</p>
-        </div>
-        <div class="pack-item">
-          <div class="pack-icon">🛍️</div>
-          <h4>Paper Bag Bundle</h4>
-          <p>Bisa dijual satuan atau bundle 3 pcs dalam paper bag</p>
-        </div>
-        <div class="pack-item">
-          <div class="pack-icon">❄️</div>
-          <h4>Daya Tahan</h4>
-          <p>2 hari suhu ruang, 5 hari di kulkas</p>
-        </div>
-        <div class="pack-item">
-          <div class="pack-icon">✅</div>
-          <h4>Higienitas</h4>
-          <p>Cup foil langsung jadi wadah, aman & higienis</p>
-        </div>
-      </div>
+  <!-- SCENE 3 -->
+  <section class="scene">
+    <div class="scene-header">
+      <span class="scene-title">Scene 3</span>
+      <span class="scene-location">Gerak Diam-Diam · belakang gudang</span>
     </div>
+    <div class="action">(Di belakang gudang, dekat saluran air kotor. Fahri melihat ke kanan-kiri, mengeluarkan ponsel satelit kecil.)</div>
+    <div class="dialogue-block">
+      <div class="line"><span class="speaker">Fahri</span><span class="dialogue-text">(Menempelkan ponsel ke telinga. Wajah setengah tersorot lampu remang dari ventilasi. Senyum tipis penuh kalkulasi.) Saya. Iya. Mereka bakal mulai besok. Targetnya gudang penyimpanan timur. Jam 2 pagi. Pastikan semua siap. Kasih mereka sambutan hangat... tapi jangan langsung habiskan. Biarin mereka berkeringat dulu di dalam perangkap.</span></div>
+      <div class="action">(Jeda mendengarkan suara di seberang.)</div>
+      <div class="line"><span class="speaker">Fahri</span><span class="dialogue-text">(Terkekeh pelan, hampir tak terdengar.) Luthfi? Jangan sentuh dia. Dia punya gue. Biarin aja si pintar itu main catur sampe anak buahnya habis satu-satu. Begitu dia sendirian... dia gak ada pilihan selain ikut gue.</span></div>
+      <div class="action">(Dari balik tumpukan ban bekas, Agung berdiri diam. Matanya terpejam, tapi telinganya mendengar jelas. Tubuhnya menyatu dengan bayangan. Ekspresi datar, hanya urat di lehernya yang sedikit menegang.)</div>
+      <div class="line"><span class="speaker">Fahri</span><span class="dialogue-text">(Mematikan telepon. Menatap layar ponsel yang mati. Ekspresi kosong, lalu tiba-tiba tersenyum lebar. Senyum kemenangan yang dingin.)</span></div>
+      <div class="action">(Agung mundur perlahan ke dalam gelap tanpa suara setapak pun.)</div>
+    </div>
+  </section>
+
+  <!-- SCENE 4 -->
+  <section class="scene">
+    <div class="scene-header">
+      <span class="scene-title">Scene 4</span>
+      <span class="scene-location">Pengkhianatan Terbongkar · gudang</span>
+    </div>
+    <div class="action">(Di dalam gudang. Semua sudah berkumpul. Suasana seperti jerat yang mulai mengencang. Agung baru masuk lewat pintu belakang. Langkahnya tanpa suara membuat semua menoleh.)</div>
+    <div class="dialogue-block">
+      <div class="line"><span class="speaker">Agung</span><span class="dialogue-text">(Tidak duduk. Berjalan ke tengah lingkaran, berhenti tepat di bawah lampu. Matanya menyapu semua kecuali Fahri.) Ada yang bocorin rencana kita.</span></div>
+      <div class="line"><span class="speaker">Reyhan</span><span class="dialogue-text">(Langsung berdiri, kursinya jatuh. Ekspresi beringas.) SIAPA?! Siapa yang berani main belakang?! Omongan gue soal kematian tadi cuma pemanasan. Sekarang gue beneran pengen ada yang mati!</span></div>
+      <div class="line"><span class="speaker">Restu</span><span class="dialogue-text">(Meraih kerah baju Reyhan dan menariknya duduk paksa. Suara tenang tapi tajam.) Duduk. Jangan bikin suara. Kalo lu teriak, mereka di luar bisa denger. Biar Agung lanjutin.</span></div>
+      <div class="action">(Agung menggeser pandangannya perlahan. Melewati wajah Dava yang pucat, Restu yang menahan Reyhan, Dimas yang menyilangkan tangan… dan berhenti tepat di wajah Fahri. Tatapan itu bertemu. Agung mengangguk satu kali, sangat pelan.)</div>
+      <div class="line"><span class="speaker">Fahri</span><span class="dialogue-text">(Menyadari tatapan itu. Tidak panik. Meluruskan duduk, menyandarkan punggung, senyum tipis penuh arti.) Akhirnya ketahuan juga. Lebih cepet dari perkiraan gue. Lu memang hantu yang paling berguna, Gung.</span></div>
+      <div class="line"><span class="speaker">Dava</span><span class="dialogue-text">(Wajahnya pucat pasi. Menatap Fahri seperti orang asing. Suara bergetar.) Lu serius, Bang...? Gue... gue anggap lu kakak. Kita dari bawah bareng-bareng.</span></div>
+      <div class="line"><span class="speaker">Fahri</span><span class="dialogue-text">(Berdiri, merapikan lipatan lengan kemeja dengan santai. Menatap Dava dengan sedikit iba yang dibuat-buat.) Gue cuma gak mau jadi bayangan selamanya, Va. Capek. Tiap kali orang ngomong "Tujuh Bayangan", nama gue ada di urutan keenam. Gue pengen nama gue disebut duluan, sendiri, tanpa embel-embel "bayangan".</span></div>
+      <div class="line"><span class="speaker">Reyhan</span><span class="dialogue-text">(Meronta dari pegangan Restu. Matanya berkaca-kaca.) Kita ini keluarga, Bro! Keluarga! Lo tega nusuk orang yang tidur di lantai yang sama sama lo?!</span></div>
+      <div class="line"><span class="speaker">Fahri</span><span class="dialogue-text">(Tawa dingin, menusuk. Menatap Reyhan dengan merendahkan.) Di dunia ini gak ada keluarga, Rey. Yang ada cuma yang naik... dan yang diinjek. Gue cuma milih gak jadi alas kaki kalian. Simpel.</span></div>
+    </div>
+  </section>
+
+  <!-- SCENE 5 -->
+  <section class="scene">
+    <div class="scene-header">
+      <span class="scene-title">Scene 5</span>
+      <span class="scene-location">Akhir Tegang · gudang, sirine mendekat</span>
+    </div>
+    <div class="action">(Tiba-tiba terdengar lolongan sirine dari kejauhan. Suara itu mendekat dengan cepat. Suara ban mobil mengerem di atas kerikil halaman luar. Sorot lampu senter mulai menari-nari dari celah jendela yang tertutup seng.)</div>
+    <div class="dialogue-block">
+      <div class="line"><span class="speaker">Restu</span><span class="dialogue-text">(Mendengus, melepaskan pegangan pada Reyhan. Meraih rokok dan akhirnya menyalakannya. Asap mengepul.) Timing-nya bagus. Drama keluarga + polisi. Lengkap. Ini mah udah bukan kebetulan. Ini kado perpisahan dari temen kita.</span></div>
+      <div class="line"><span class="speaker">Dimas</span><span class="dialogue-text">(Menatap tajam ke arah Fahri. Wajah mengeras seperti batu. Tangannya mengepal.) Ini bukan kebetulan. Ini jebakan terencana. Lo telepon mereka tadi di belakang, kan, Fri? Gue bisa nyium bau got dari baju lo.</span></div>
+      <div class="line"><span class="speaker">Luthfi</span><span class="dialogue-text">(Melangkah maju, mendekati Fahri hingga jarak satu jengkal. Lampu berayun, bayangan bertabrakan. Suara berubah bisikan mematikan.) Lu udah siap dengan konsekuensinya, Fri? Di sini, di tempat kita pertama kali bersumpah? Di depan orang-orang yang lo sebut "bukan keluarga"?</span></div>
+      <div class="line"><span class="speaker">Fahri</span><span class="dialogue-text">(Membalas tatapan Luthfi tanpa berkedip. Menaikkan dagu sedikit, penuh ego.) Dari awal, gue gak pernah ragu, Fi. Justru ini yang gue mau. Lu lawan gue di sini... atau lu lari kayak tikus dari pintu belakang. Pilihan ada di tangan lo.</span></div>
+      <div class="action">(Suasana senyap sejenak. Hanya suara sirine dan detak jantung mereka sendiri.)</div>
+      <div class="line"><span class="speaker">Agung</span><span class="dialogue-text">(Tiba-tiba melangkah mundur ke arah pintu darurat belakang. Menatap semuanya satu per satu. Suara pelan memecah keheningan.) Permainan berubah... tapi belum selesai. Jangan mati malam ini. Gue gak mau ngubur kalian satu-satu.</span></div>
+      <div class="action">(Agung menarik tuas listrik utama di dekat pintu. SEGERA. Gelap total. Suara sirine kini tepat di depan pintu. Hanya suara langkah kaki berlarian dan Restu menggerutu pelan, "Gue benci gelap..." sebelum semua suara tenggelam oleh gebrakan di pintu depan.)</div>
+    </div>
+  </section>
+
+  <div class="footer-note">
+    🕱 7 bayangan · naskah diperpanjang · 2026
   </div>
-
-  <!-- 3 -->
-  <div class="section">
-    <div class="section-header">
-      <div class="section-number">3</div>
-      <div class="section-title">Rancangan Biaya Produksi</div>
-    </div>
-    <div style="border-radius:13px;overflow:hidden;border:1px solid var(--soft);">
-      <table class="biaya-table">
-        <thead>
-          <tr>
-            <th>Bahan / Keperluan</th>
-            <th>Jumlah</th>
-            <th>Harga Satuan</th>
-            <th>Total</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr><td>Pisang ambon matang</td><td>1 sisir (~6 buah)</td><td>Rp 8.000</td><td>Rp 8.000</td></tr>
-          <tr><td>Tepung terigu serbaguna</td><td>200 g</td><td>Rp 5.000</td><td>Rp 5.000</td></tr>
-          <tr><td>Gula pasir</td><td>150 g</td><td>Rp 3.000</td><td>Rp 3.000</td></tr>
-          <tr><td>Telur ayam</td><td>2 butir</td><td>Rp 3.000/butir</td><td>Rp 6.000</td></tr>
-          <tr><td>Minyak goreng nabati</td><td>80 ml</td><td>Rp 3.000</td><td>Rp 3.000</td></tr>
-          <tr><td>Baking powder + baking soda</td><td>1 set sachet</td><td>Rp 3.000</td><td>Rp 3.000</td></tr>
-          <tr><td>Vanili + garam</td><td>secukupnya</td><td>Rp 1.000</td><td>Rp 1.000</td></tr>
-          <tr><td>Keju parut (topping)</td><td>50 g</td><td>Rp 7.000</td><td>Rp 7.000</td></tr>
-          <tr><td>Cetakan cup aluminium foil</td><td>10 buah</td><td>Rp 500/buah</td><td>Rp 5.000</td></tr>
-          <tr><td>Kotak mika kemasan</td><td>10 buah</td><td>Rp 1.500/buah</td><td>Rp 15.000</td></tr>
-          <tr><td>Label stiker + pita</td><td>10 lembar</td><td>Rp 500/lembar</td><td>Rp 5.000</td></tr>
-          <tr><td>Gas / bahan bakar (estimasi)</td><td>1 porsi</td><td>Rp 3.000</td><td>Rp 3.000</td></tr>
-        </tbody>
-        <tfoot>
-          <tr><td colspan="3">💰 Total Biaya Produksi (10 buah)</td><td>Rp 64.000</td></tr>
-        </tfoot>
-      </table>
-    </div>
-    <div class="info-box" style="margin-top:12px;">
-      <strong>Biaya per unit:</strong> Rp 64.000 ÷ 10 buah = <strong>Rp 6.400 / buah</strong>
-    </div>
-  </div>
-
-  <!-- 4 -->
-  <div class="section">
-    <div class="section-header">
-      <div class="section-number">4</div>
-      <div class="section-title">Harga Jual Produk</div>
-    </div>
-    <div class="finance-grid">
-      <div class="finance-card modal">
-        <div class="fc-label">Modal per buah</div>
-        <div class="fc-main">Rp 6.400</div>
-        <div class="fc-sub">Total modal 10 buah:<br><strong>Rp 64.000</strong></div>
-        <div class="fc-deco">🌿</div>
-      </div>
-      <div class="finance-card harga">
-        <div class="fc-label">Harga Jual per buah</div>
-        <div class="fc-main">Rp 10.000</div>
-        <div class="fc-sub">Bersaing di pasar jajanan sekolah &amp; media sosial</div>
-        <div class="fc-deco">🏷️</div>
-      </div>
-    </div>
-    <div class="info-box" style="margin-top:14px;">
-      <strong>Pertimbangan Harga:</strong> Rp 10.000 sesuai segmen pelajar dan umum, kompetitif dibanding kue kukus di pasaran (Rp 8.000–15.000), dan memberikan margin yang wajar. Harga bundle 3 pcs bisa ditawarkan <strong>Rp 27.000</strong> untuk mendorong pembelian lebih banyak.
-    </div>
-  </div>
-
-  <!-- 5 -->
-  <div class="section">
-    <div class="section-header">
-      <div class="section-number">5</div>
-      <div class="section-title">Perkiraan Keuntungan</div>
-    </div>
-
-    <div class="profit-box">
-      <h4>📊 Perhitungan Laba — Per Batch (10 Buah)</h4>
-      <div class="pb-row"><span>Total Pendapatan (10 × Rp 10.000)</span><span>Rp 100.000</span></div>
-      <div class="pb-row"><span>Total Biaya Produksi</span><span>Rp 64.000</span></div>
-      <div class="pb-row"><span>✅ Keuntungan Bersih</span><span>Rp 36.000</span></div>
-    </div>
-
-    <div class="two-col" style="margin-top:13px;">
-      <div class="list-card">
-        <h4>📈 Margin Keuntungan</h4>
-        <ul>
-          <li>Profit per buah <span class="qty">Rp 3.600</span></li>
-          <li>Margin keuntungan <span class="qty">56,25%</span></li>
-          <li>ROI (Return on Investment) <span class="qty">56,25%</span></li>
-        </ul>
-      </div>
-      <div class="list-card">
-        <h4>📦 Skenario Skala</h4>
-        <ul>
-          <li>Produksi 20 biji / hari <span class="qty">Untung ~Rp 72.000</span></li>
-          <li>Produksi 50 biji / hari <span class="qty">Untung ~Rp 180.000</span></li>
-          <li>Beli bahan secara grosir <span class="qty">Hemat ~15%</span></li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="conclusion-box">
-      <strong>Kesimpulan:</strong> Dengan modal awal <strong>Rp 64.000</strong>, produk Bolu Pisang Kukus menghasilkan keuntungan bersih <strong>Rp 36.000</strong> per batch (10 buah), atau margin lebih dari 56%. Produk ini layak dikembangkan karena bahan mudah didapat, proses sederhana, dan peluang pasar terbuka luas — baik penjualan langsung maupun via media sosial dan marketplace.
-    </div>
-  </div>
-
 </div>
-
-<footer>
-  Tugas Prakarya Pengolahan Pangan Nabati &nbsp;|&nbsp; SMA &nbsp;|&nbsp; Produk: Bolu Pisang Kukus Kekinian
-</footer>
-
 </body>
 </html>
